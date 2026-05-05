@@ -51,7 +51,14 @@ AI is an accelerator, not a designer. The structure described above is what make
 
 ## What's the same with or without AI
 
-Everything above. The SRS, SAD, ADRs, SDDs, playbook, RPA, Spec-kit, the pipeline structure — none of it depends on having an AI assistant. I used the same shape on Polkadot/Substrate parachain work without AI, and on TypeScript backends with junior engineers, and now on this showcase with Claude Code as the primary executor. AI changes the speed of execution, not the discipline.
+Everything above. The SRS, SAD, ADRs, SDDs, playbook, RPA, Spec-kit, the pipeline structure — none of it depends on having an AI assistant. I've used the same shape across:
+
+- **AI-led, solo human in the loop** — this showcase, and an ongoing personal project (MyApprofile, B2C career-management platform on a Tauri/Next/Rust/Bun monorepo) where Claude Code is the primary code-writing agent.
+- **AI under controlled access** — a Polkadot/Substrate audit-trail parachain in production at Multiledgers. Claude Code was authorized for three people only (myself, one senior, the tech lead); the rest of the team worked AI-free against the same artifacts. Same SRS/SAD/ADRs read by both groups.
+- **Humans only, mixed seniority** — TypeScript backends with junior engineers building against shared documentation.
+- **Solo human, no AI** — documentation-first migration tools processing billions of records.
+
+AI changes the speed of execution and shifts where I spend time (more architecture, less typing). It doesn't change the discipline. The structure is what makes the work legible regardless of executor mix or who is and isn't authorized to use AI on the team.
 
 ## How to evaluate this repo
 

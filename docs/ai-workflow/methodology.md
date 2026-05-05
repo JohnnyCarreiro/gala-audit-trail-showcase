@@ -19,13 +19,14 @@ This is a per-project distillation of the methodology described in [`../HOW_I_WO
 
 ## Why the structure works without AI
 
-The author has used the same shape (SRS, SAD, ADRs, SDDs, RPA, Spec-kit) on:
+The author has used the same shape (SRS, SAD, ADRs, SDDs, RPA, Spec-kit) across very different executor mixes:
 
-- A Polkadot/Substrate parachain (audit trail in production at Multiledgers — Rust)
-- TypeScript backends with junior engineers
-- Documentation-first migration tools processing billions of records
+- **AI-led, solo human in the loop** — this showcase, and an ongoing personal project (MyApprofile, B2C career-management platform on Tauri/Next/Rust/Bun monorepo) where Claude Code is the primary code-writing agent.
+- **AI under controlled access** — a Polkadot/Substrate parachain in production at Multiledgers (audit trail, Rust). Claude Code was authorized for three people only (the author + one senior engineer + the tech lead); the rest of the team worked AI-free against the same artifacts.
+- **Humans only, mixed seniority** — TypeScript backends with junior engineers building against the same SRS/SAD/ADRs.
+- **Solo human, no AI** — documentation-first migration tools processing billions of records.
 
-In each case the methodology was the same; the executors were different (humans only). AI changes the speed of execution; it doesn't change the discipline. This is the point reviewers should take from this project: the structure is what makes the work legible — to humans, to AI, and to future contributors regardless of who or what they are.
+In every case the methodology was the same. AI changes the speed of execution and shifts where the human spends time (more architecture, less typing); it doesn't change the discipline. The point reviewers should take from this project: the structure is what makes the work legible — to humans, to AI, and to future contributors regardless of who or what they are or what authorization model the team operates under.
 
 ## Scope of this directory
 
