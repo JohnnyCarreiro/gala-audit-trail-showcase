@@ -25,7 +25,7 @@ Build an **off-chain verifier** in Rust as a CLI binary (`apps/audit-verifier`) 
 
 | Threat | How the verifier catches it |
 |--------|----------------------------|
-| Chaincode compromised, returns false `verifyIntegrity` | Verifier reads from `@gala-chain/stream` (public event feed), not from the chaincode itself |
+| Chaincode compromised, returns false `verifyIntegrity` | Verifier reads events from the public TNT gateway REST API, not from the chaincode's own verification method |
 | Ledger admin tampers with stored events | Recomputed hash chain breaks; signatures don't validate |
 | Forged event inserted out of order | Sequence check catches gap; signature check catches unauthorized signer |
 | Payload mutation | Recomputed `prevHash` mismatch + signature failure |
@@ -33,13 +33,13 @@ Build an **off-chain verifier** in Rust as a CLI binary (`apps/audit-verifier`) 
 **Components:**
 
 - **`crates/dto-canon`** (lib, pure, no I/O):
-  - Canonical JSON serialization (alphabetical keys, no whitespace, numbers as strings) — byte-identical to GalaChain's signing scheme
-  - secp256k1 sign/verify via `k256`
+  - Canonical JSON serialization per [`authorization.md`](https://github.com/GalaChain/sdk/blob/main/docs/authorization.md): top-level keys sorted alphabetically, no whitespace, **only `BigNumber` values stringified** (regular numbers stay as JSON numbers), and the `signature` and `trace` fields are stripped from the payload before signing. Byte-identical to what `@gala-chain/api` signs internally.
+  - secp256k1 sign/verify via `k256`; signature format is `r || s || v` (recovery byte present) by default, with optional DER mode that requires the `signerPublicKey` to be passed explicitly
   - keccak256 via `sha3`
   - One `thiserror` enum (`DtoCanonError`)
 - **`apps/audit-verifier`** (bin):
   - `clap` CLI: `audit-verifier verify --session-id <uuid> --chain-url <url>`
-  - `reqwest` client to `@gala-chain/stream`
+  - `reqwest` client polling the TNT gateway REST API (`https://gateway-testnet.galachain.com/api`) for the session's events. Note: GalaChain ships `@gala-chain/stream` (RxJS Observables of blocks, Node-side) as the natural streaming primitive; we deliberately use REST polling instead to keep the verifier as a single Rust binary — simpler distribution for a 1-week showcase, no Node sidecar. Trade-off documented honestly in the README.
   - Recomputes hash chain, validates signatures via `dto-canon`
   - Emits proof JSON (`{ session_id, events_verified, status: "valid" | "tampered", tampered_at?, reason? }`)
   - `anyhow::Result` only in `main.rs`; `thiserror` enums per module elsewhere

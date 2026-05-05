@@ -58,7 +58,7 @@ These invariants are non-negotiable and each is covered by an explicit test. Det
 **In scope (must ship):**
 - TS chaincode with `initiateSession`, `appendCheckpoint`, `finalizeSession`, `getSession`, `getSessionEvents`, `verifyIntegrity`
 - Next.js frontend covering connect → initiate → checkpoint × 2-3 → finalize → verify
-- Rust off-chain verifier (`apps/audit-verifier`) consuming `@gala-chain/stream`
+- Rust off-chain verifier (`apps/audit-verifier`) polling the TNT gateway REST API for events (chosen over `@gala-chain/stream`'s RxJS Observables to keep a single Rust binary — see ADR-0007)
 - Public deployment of all three
 - Documentation (this file + SAD + 7 ADRs + 2 SDDs + playbook + AI workflow)
 

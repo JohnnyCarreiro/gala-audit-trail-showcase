@@ -44,5 +44,5 @@ cargo run -p audit-verifier --release -- verify \
 > ```bash
 > cargo run -p audit-verifier --release -- verify \
 >   --session-id <demo-session-uuid> \
->   --chain-url https://tnt.galachain.com
+>   --chain-url https://gateway-testnet.galachain.com/api
 > ```

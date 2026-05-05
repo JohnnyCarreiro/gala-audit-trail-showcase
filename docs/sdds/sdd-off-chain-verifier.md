@@ -23,7 +23,7 @@ Reproduces GalaChain's signing scheme byte-for-byte. No I/O.
 
 | Module | Responsibility |
 |--------|---------------|
-| `canonical` | Serialize a DTO to canonical JSON (alphabetical keys, no whitespace, numbers as strings). Bytes match what `@gala-chain/api` signs internally. |
+| `canonical` | Serialize a DTO to canonical JSON per [`authorization.md`](https://github.com/GalaChain/sdk/blob/main/docs/authorization.md): top-level keys sorted alphabetically, no whitespace, only `BigNumber` values stringified, and `signature` + `trace` fields stripped before signing. Byte-identical to `@gala-chain/api`'s internal signing input. |
 | `signer` | secp256k1 ECDSA sign over keccak256(canonical bytes). Backed by `k256` + `sha3`. |
 | `verifier` | secp256k1 verify + public key recovery. Returns `Result<RecoveredPublicKey, VerifyError>`. |
 | `error` | `DtoCanonError` enum (`thiserror`). |
@@ -40,7 +40,7 @@ CLI: `audit-verifier verify --session-id <uuid> --chain-url <url>`.
 
 | Module | Responsibility |
 |--------|---------------|
-| `stream` | `reqwest` client to `@gala-chain/stream` (or an explorer API). Wrapper returns `Result<Vec<RawEvent>, StreamError>`. |
+| `stream` | `reqwest` client polling the TNT gateway REST API (`https://gateway-testnet.galachain.com/api`) for events of a given `sessionId`. Wrapper returns `Result<Vec<RawEvent>, StreamError>`. We chose REST polling over `@gala-chain/stream` (RxJS Observables, Node-only) to keep the verifier as a single Rust binary — see ADR-0007. |
 | `chain` | Recompute hash chain for the session. Detect sequence gaps, payload mutation, signature mismatches. |
 | `proof` | Emit proof JSON. |
 | `main` | `clap` CLI; `anyhow::Result` (the only place). |
@@ -111,5 +111,5 @@ Runs in parallel with the TS pipelines.
 ## 6. Open items
 
 - Exact stream API endpoint for the deployed TNT chaincode — confirm during `feat-007`
-- Signature recovery byte order (r || s || v vs DER) — confirm against `authorization.md`
+- Signature byte format in practice — `authorization.md` allows both `r || s || v` (default, recovery byte present) and DER (requires explicit `signerPublicKey`); confirm which `BrowserConnectClient` produces with MetaMask.
 - Test vectors: extract from a local `chaincode-test` run if `authorization.md` doesn't ship enough

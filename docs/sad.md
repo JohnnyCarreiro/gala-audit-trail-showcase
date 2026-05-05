@@ -13,8 +13,8 @@ flowchart LR
   Studio[Game studio backend<br/>signer] -- signs checkpoint DTO --> Frontend
   Frontend["apps/frontend<br/>Next.js + @gala-chain/connect"] -- submit/read --> GalaChain[(GalaChain TNT<br/>Hyperledger Fabric)]
   Chaincode["apps/chaincode<br/>AuditTrailContract"] -- runs inside --> GalaChain
-  Stream[("@gala-chain/stream<br/>public event feed")] -- reads --> GalaChain
-  Verifier["apps/audit-verifier<br/>Rust CLI"] -- consumes --> Stream
+  Gateway[("TNT gateway REST<br/>gateway-testnet.galachain.com/api")] -- queries --> GalaChain
+  Verifier["apps/audit-verifier<br/>Rust CLI"] -- polls --> Gateway
   Reviewer[Reviewer / auditor] -- runs --> Verifier
   Reviewer -. clicks Verify .-> Frontend
 ```
@@ -87,7 +87,7 @@ flowchart TB
 
   Chaincode -. depends on .-> SDK["@gala-chain/api<br/>@gala-chain/chaincode"]
   Frontend -. depends on .-> Connect["@gala-chain/connect"]
-  Verifier -. depends on .-> Stream["@gala-chain/stream"]
+  Verifier -. polls .-> Gateway["TNT gateway REST API"]
 ```
 
 Two workspaces, one repo. Bun and Cargo coexist at the root. CI runs both pipelines in parallel.

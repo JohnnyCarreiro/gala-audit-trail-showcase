@@ -25,7 +25,7 @@ This project uses `Result<T, E>` and `Option<T>` app-wide, on both the TS and Ru
 
 ### TypeScript
 
-**Library:** [`@consolidados/results`](https://github.com/ConsoliDados/results) — Rust-inspired, exhaustive `match`, `None` singleton. Globals via `@gala-audit-trail/result-helpers/globals` — `Ok`, `Err`, `Some`, `None`, `match`, and the `Result` / `Option` types are available without imports.
+**Library:** [`@consolidados/results`](https://github.com/ConsoliDados/results) — Rust-inspired, exhaustive `match`, `None` singleton. The lib exposes globals via `@consolidados/results/globals`; this project re-exports them through `@gala-audit-trail/result-helpers/globals` (an internal package that side-effect imports `@consolidados/results/globals` plus our local `Brand<T,B>` / `EnumValues<T>` helpers). Once configured, `Ok`, `Err`, `Some`, `None`, `match`, and the `Result` / `Option` types are available without per-file imports.
 
 **Convention:** any function with a *business-meaningful* failure returns `Result<T, E>`; any "may not exist" returns `Option<T>`. This **replaces** ad-hoc `throw`s and `T | null` / `T | undefined` returns.
 

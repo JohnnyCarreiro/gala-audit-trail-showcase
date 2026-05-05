@@ -28,18 +28,32 @@ Things uncertain from the GalaChain SDK or other library docs. Each item gets re
 **Working assumption:** Read `authorization.md` first; if gaps remain, capture a real signed DTO from a `chaincode-test` run and use it as the golden vector.
 **Resolved by:** TBD — `feat-006-dto-canon-lib` Research phase.
 
-## OQ-03 — `@gala-chain/stream` endpoint shape
+## OQ-03 — TNT gateway REST endpoints for session events
 
-**Context:** SDD-002 — `apps/audit-verifier` consumes the stream.
-**Question:** What's the exact endpoint and authentication for streaming events from a deployed TNT chaincode? Public or auth-gated?
-**Working assumption:** Start with public REST polling against a known explorer endpoint; switch to true streaming only if it ships in time.
+**Context:** SDD-002 — `apps/audit-verifier` polls the TNT gateway REST API (chosen over `@gala-chain/stream` per ADR-0007).
+**Question:** What are the exact REST endpoints and query parameters on `https://gateway-testnet.galachain.com/api` for fetching events of a given `sessionId`? Auth-gated or public? Pagination model? The gateway exposes Swagger at `/docs` — check there during Research.
+**Working assumption:** Public read endpoints exist for queries equivalent to chaincode read methods (`getSession`, `getSessionEvents`); we hit those by issuing the same query DTOs the frontend uses.
 **Resolved by:** TBD — `feat-007-audit-verifier-cli` Research phase.
 
-## OQ-04 — `chaincode-testing` framework availability
+## OQ-04 — `@gala-chain/test` test harness
 
 **Context:** SRS NFR-1 — domain code testable in isolation.
-**Question:** Is `chaincode-testing` (from `@gala-chain/chain-test`) fully available for our integration tests, or are some primitives still in flux?
-**Working assumption:** Use whatever's in the current SDK release; mock the rest.
+**Question:** Is `@gala-chain/test` (`TestChaincode`, `fixture()`, `writes` matchers — verified to exist on npm at v3.1.1) sufficient for our integration tests? Domain layer is pure and tests with `bun test` directly; the harness is for the contract layer.
+**Working assumption:** `@gala-chain/test`'s `TestChaincode` covers contract-layer integration tests; mock the rest if needed.
 **Resolved by:** TBD — `feat-004-chaincode-contract-layer` Research phase.
+
+## OQ-05 — Nested-object canonicalization
+
+**Context:** ADR-0007 / SDD-002 — `crates/dto-canon` must reproduce GalaChain's canonical signing input byte-for-byte.
+**Question:** [`authorization.md`](https://github.com/GalaChain/sdk/blob/main/docs/authorization.md) specifies top-level alphabetical key sorting, no whitespace, `BigNumber` stringification, and stripping of `signature`/`trace`. **It does not explicitly specify how nested objects and arrays are handled** — are nested object keys also sorted alphabetically (recursive), or preserved insertion order? Are arrays serialized as-is?
+**Working assumption:** Recursive alphabetical sorting (most defensive). Validate by capturing a real SDK-signed DTO with nested fields and round-tripping through `dto-canon`.
+**Resolved by:** TBD — `feat-006-dto-canon-lib` Research phase.
+
+## OQ-06 — Signature byte format produced by `BrowserConnectClient`
+
+**Context:** ADR-0003 / SDD-002 — verifier must accept the same signature format the frontend produces.
+**Question:** `authorization.md` allows two signature formats: `r || s || v` (default, recovery byte present, hex-encoded) and DER (requires explicit `signerPublicKey` field on the DTO). Which does `BrowserConnectClient` produce with MetaMask by default?
+**Working assumption:** `r || s || v` (matches Ethereum convention which MetaMask uses). Confirm by inspecting a real signed DTO from the frontend during integration testing.
+**Resolved by:** TBD — `feat-005-frontend-bootstrap` integration phase.
 
 <!-- Append new questions below. Resolved questions can be deleted after promotion to ADR / SDD. -->
