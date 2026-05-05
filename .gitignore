@@ -1,6 +1,32 @@
 # Claude Code (per-project local state — auto-generated)
 .claude/settings.local.json
 
+# Node / Bun
+node_modules/
+**/node_modules/
+.bun/
+bun.lockb
+
+# TypeScript
+dist/
+*.tsbuildinfo
+
+# Next.js
+.next/
+out/
+
+# Rust / Cargo
+target/
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
 # Obsidian — vault config + plugins + theme tracked (so the vault works on first open).
 # Only personal/transient state is excluded.
 docs/.obsidian/workspace.json
@@ -14,5 +40,3 @@ docs/.obsidian/plugins/omnisearch/databases/
 
 # Plugin update lock files Obsidian rewrites on every update
 docs/.obsidian/plugins/*/.hotreload
-
-# More entries (node_modules, target, dist, .env, etc.) land with FEAT-001 monorepo bootstrap.
