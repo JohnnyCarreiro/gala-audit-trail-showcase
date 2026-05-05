@@ -1,0 +1,16 @@
+[package]
+name = "dto-signer"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Thin CLI on top of dto-canon — reads a DTO + private key from stdin, emits canonical bytes + signature."
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "dto-signer"
+path = "src/main.rs"

@@ -13,12 +13,12 @@ Live checklist. Tick as we go.
 
 ## G2 — Cargo workspace + Rust stubs
 
-- [ ] T2.1 — Write root `Cargo.toml`
-- [ ] T2.2 — Stub `crates/dto-canon` (lib)
-- [ ] T2.3 — Stub `apps/audit-verifier` (bin)
-- [ ] T2.4 — Stub `apps/dto-signer` (bin)
-- [ ] T2.5 — Verify: `cargo check --workspace`, `cargo fmt --all`, `cargo clippy --workspace -- -D warnings`
-- [ ] **C2** — Commit: `chore(monorepo): bootstrap Cargo workspace with stub crates for audit-verifier, dto-signer, dto-canon`
+- [x] T2.1 — Write root `Cargo.toml` (resolver 2, edition 2021, rust-version 1.80, workspace lints: forbid unsafe + warn unwrap/expect/panic, release profile with thin LTO)
+- [x] T2.2 — Stub `crates/dto-canon` (lib, doc-comment-only)
+- [x] T2.3 — Stub `apps/audit-verifier` (bin, prints "stub")
+- [x] T2.4 — Stub `apps/dto-signer` (bin, prints "stub")
+- [x] T2.5 — Verified: `cargo check --workspace`, `fmt --check`, `clippy -D warnings`, `test --workspace` all green
+- [x] **C2** — Commit: `chore(monorepo): bootstrap Cargo workspace with stub crates for audit-verifier, dto-signer, dto-canon`
 
 ## G3 — CI workflows
 

@@ -1,0 +1,16 @@
+[package]
+name = "audit-verifier"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Off-chain verifier CLI for the Gala audit trail. Polls the TNT gateway, recomputes the hash chain, emits tampering proofs."
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "audit-verifier"
+path = "src/main.rs"
