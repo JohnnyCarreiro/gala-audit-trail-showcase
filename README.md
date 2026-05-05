@@ -9,7 +9,7 @@ Tournament integrity, anti-cheat verification, replay attestation, verifiable le
 ## Stack
 
 - TypeScript chaincode on GalaChain SDK (`@gala-chain/api`, `@gala-chain/chaincode`)
-- Next.js 14+ frontend via `@gala-chain/connect`
+- Next.js 16+ frontend via `@gala-chain/connect`
 - Result type at domain boundary via [`@consolidados/results`](https://github.com/ConsoliDados/results)
 - Hyperledger Fabric (underlying GalaChain L1)
 

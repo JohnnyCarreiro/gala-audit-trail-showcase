@@ -24,7 +24,7 @@ The Result/Option discipline in [`playbook.md`](../playbook.md) applies on the f
 ## Decision
 
 **Stack:**
-- Next.js 14+ with App Router
+- Next.js 16+ with App Router
 - Tailwind CSS for productivity
 - `@gala-chain/connect` for chaincode I/O
 - `BrowserConnectClient` for MetaMask integration

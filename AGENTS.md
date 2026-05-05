@@ -9,7 +9,7 @@ Bun workspace + Cargo workspace, side by side:
 | Path | Role |
 |------|------|
 | `apps/chaincode` | TS chaincode on GalaChain SDK (`@gala-chain/api`, `@gala-chain/chaincode`) |
-| `apps/frontend` | Next.js 14+ App Router demo via `@gala-chain/connect` |
+| `apps/frontend` | Next.js 16+ App Router demo via `@gala-chain/connect` |
 | `apps/audit-verifier` | Rust binary — off-chain verifier (CLI consuming `@gala-chain/stream` and re-checking the hash chain) |
 | `apps/dto-signer` | Rust binary — bonus, thin CLI on top of `dto-canon` |
 | `crates/dto-canon` | Rust library — canonical DTO serialization + secp256k1/keccak256 sign/verify primitives |
