@@ -1,12 +1,18 @@
 # Claude Code (per-project local state — auto-generated)
 .claude/settings.local.json
 
-# Obsidian — vault config tracked, but personal state and binaries excluded
+# Obsidian — vault config + plugins + theme tracked (so the vault works on first open).
+# Only personal/transient state is excluded.
 docs/.obsidian/workspace.json
 docs/.obsidian/workspace-mobile.json
 docs/.obsidian/workspaces.json
 docs/.obsidian/cache
-docs/.obsidian/plugins/
-docs/.obsidian/themes/
+
+# Per-plugin transient state (data.json holds settings — keep; cache files — drop)
+docs/.obsidian/plugins/*/main.js.map
+docs/.obsidian/plugins/omnisearch/databases/
+
+# Plugin update lock files Obsidian rewrites on every update
+docs/.obsidian/plugins/*/.hotreload
 
 # More entries (node_modules, target, dist, .env, etc.) land with FEAT-001 monorepo bootstrap.
