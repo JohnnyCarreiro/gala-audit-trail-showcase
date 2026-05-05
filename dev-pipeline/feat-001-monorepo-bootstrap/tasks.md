@@ -28,7 +28,7 @@ Live checklist. Tick as we go.
 
 ## G4 — Verification + close
 
-- [ ] T4.1 — Full local run: bun install (clean), bun run lint, bun run typecheck, cargo check, cargo clippy, cargo fmt --check, cargo test
-- [ ] T4.2 — Update `feature.md` status frontmatter to `done`
-- [ ] **C4** — Commit: `chore(meta): mark FEAT-001 done`
-- [ ] Push `dev` to `origin`
+- [x] T4.1 — Full local run end-to-end: `bun install --frozen-lockfile` ok, `bun run lint` clean, `bun run typecheck` clean, `cargo fmt --all -- --check` clean, `cargo clippy --workspace --all-targets -- -D warnings` clean, `cargo test --workspace` clean
+- [x] T4.2 — Update `feature.md` status `in-progress → done` and tick all acceptance boxes
+- [x] **C4** — Commit: `chore(meta): mark FEAT-001 done`
+- [x] Push `dev` to `origin`
