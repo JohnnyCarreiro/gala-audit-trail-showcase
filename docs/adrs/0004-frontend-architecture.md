@@ -25,7 +25,8 @@ The Result/Option discipline in [`playbook.md`](../playbook.md) applies on the f
 
 **Stack:**
 - Next.js 16+ with App Router
-- Tailwind CSS for productivity
+- **Tailwind CSS v4** (CSS-first config, no `tailwind.config.js` — uses `@theme` directive)
+- **shadcn/ui** (Radix UI primitives + Tailwind v4) installed via `bunx shadcn@latest init`. Copy-paste components live under `apps/frontend/components/ui/`. Lets the frontend ship in 1 day instead of 3.
 - `@gala-chain/connect` for chaincode I/O
 - `BrowserConnectClient` for MetaMask integration
 
@@ -48,6 +49,8 @@ The Result/Option discipline in [`playbook.md`](../playbook.md) applies on the f
 - **Vite + React (no Next)** — simpler bundle, but loses Server Components and Vercel deploy ergonomics. Kept Next for showcase polish.
 - **Zustand or Jotai for wallet state** — not needed for 3 pages. React context is enough.
 - **Client-side `try/catch` everywhere with toast notifications** — quicker, but breaks the Result discipline. Rejected.
+- **Custom components from scratch (or just unstyled HTML + Tailwind)** — costs 2–3 days for zero narrative gain; shadcn/ui ships accessible Radix primitives with copy-paste ownership of the code. Aligned with the author's stack on MyApprofile (`packages/ui`).
+- **Mantine / Chakra / Material UI** — runtime CSS-in-JS adds bundle weight; shadcn/ui's static-CSS approach via Tailwind v4 is faster to deploy and easier to customize per-component. Rejected.
 
 ## Consequences
 

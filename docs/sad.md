@@ -71,7 +71,7 @@ flowchart TB
     direction TB
     Helpers["packages/result-helpers<br/>Brand, EnumValues, ResulTS globals"]
     Chaincode["apps/chaincode<br/>domain + contract + infra"]
-    Frontend["apps/frontend<br/>Next.js App Router"]
+    Frontend["apps/frontend<br/>Next.js App Router<br/>Tailwind v4 + shadcn/ui"]
     Helpers --> Chaincode
     Helpers --> Frontend
   end

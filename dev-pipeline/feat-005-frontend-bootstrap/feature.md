@@ -14,7 +14,8 @@ Build the Next.js demo frontend per [`ADR-0004`](../../docs/adrs/0004-frontend-a
 
 ## Acceptance criteria
 
-- [ ] `apps/frontend/` — Next.js 16+ App Router, Tailwind CSS, configured with `@gala-audit-trail/result-helpers/globals-types` in tsconfig + side-effect import in `app/layout.tsx`
+- [ ] `apps/frontend/` — Next.js 16+ App Router with **Tailwind CSS v4** (`@theme` directive, no `tailwind.config.js`), configured with `@gala-audit-trail/result-helpers/globals-types` in tsconfig + side-effect import in `app/layout.tsx`
+- [ ] **shadcn/ui** initialized via `bunx shadcn@latest init`; install at minimum: `Button`, `Card`, `Input`, `Form`, `Label`, `Sonner` (toasts), `Skeleton` (loading), `Badge`. Components live under `apps/frontend/components/ui/` (copy-paste, no runtime lib).
 - [ ] `lib/wallet-adapter.ts` — wraps `BrowserConnectClient`. Every method returns `Result<T, ClientError>`. **`try/catch` lives here only.**
 - [ ] `lib/galachain-client.ts` — wraps `@gala-chain/connect`. Same pattern.
 - [ ] `errors/client-error.ts` — `ClientError` const-object-as-enum + `EnumValues<typeof X>`
