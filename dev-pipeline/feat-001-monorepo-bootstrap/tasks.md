@@ -22,9 +22,9 @@ Live checklist. Tick as we go.
 
 ## G3 — CI workflows
 
-- [ ] T3.1 — Write `.github/workflows/lint-and-typecheck.yml`
-- [ ] T3.2 — Write `.github/workflows/rust-ci.yml`
-- [ ] **C3** — Commit: `ci(monorepo): add TypeScript and Rust pipelines`
+- [x] T3.1 — Write `.github/workflows/lint-and-typecheck.yml` (Bun setup, install --frozen-lockfile, biome, tsc --noEmit, conditional tests)
+- [x] T3.2 — Write `.github/workflows/rust-ci.yml` (rust stable + components, Swatinem/rust-cache, fmt --check, clippy -D warnings, test --workspace)
+- [x] **C3** — Commit: `ci(monorepo): add TypeScript and Rust pipelines`
 
 ## G4 — Verification + close
 
