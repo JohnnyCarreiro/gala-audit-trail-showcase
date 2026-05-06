@@ -17,6 +17,6 @@
 import "reflect-metadata";
 import "@gala-audit-trail/result-helpers/globals";
 
+export * from "./contracts/audit-trail-contract";
 export * from "./domain/index";
 export * from "./dto/index";
-// `./contracts` re-exports land later in FEAT-004.

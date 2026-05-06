@@ -5,6 +5,7 @@
     "types": ["@gala-audit-trail/result-helpers/globals-types", "bun"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "strictFunctionTypes": false
   }
 }
