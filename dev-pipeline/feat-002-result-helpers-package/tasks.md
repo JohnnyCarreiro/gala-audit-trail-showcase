@@ -23,11 +23,11 @@ Live checklist. Tick as we go.
 
 ## G3 — Verification
 
-- [ ] T3.1 — Full local run: bun install --frozen-lockfile, lint, typecheck, test; cargo check + test (regression sanity)
+- [x] T3.1 — Full local run end-to-end: `bun install --frozen-lockfile` (no changes), `bun run lint` clean, `bun run typecheck` clean (root + package), `bun test` 4 pass / 0 fail, `cargo check --workspace` ok, `cargo test --workspace` ok (regression sanity)
 
 ## G4 — Close + push + PR
 
-- [ ] T4.1 — Update `feature.md` status `planned → done`, tick acceptance boxes
-- [ ] **C3** — Commit: `chore(meta): mark FEAT-002 done`
+- [x] T4.1 — Update `feature.md` status `in-progress → done`, tick acceptance boxes (consumer-config criterion explicitly deferred with rationale to FEAT-003 / FEAT-005)
+- [x] **C3** — Commit: `chore(meta): mark FEAT-002 done`
 - [ ] Push `feat/result-helpers-package` to origin
 - [ ] Wait for owner OK → open PR via `gh`
