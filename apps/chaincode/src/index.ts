@@ -16,4 +16,5 @@
  */
 import "@gala-audit-trail/result-helpers/globals";
 
-// Re-exports of `./domain` (FEAT-003 G2) and `./contracts` (FEAT-004) land below.
+export * from "./domain/index";
+// `./contracts` re-exports land in FEAT-004.
