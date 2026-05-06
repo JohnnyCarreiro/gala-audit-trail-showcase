@@ -4,14 +4,14 @@ Live checklist. Tick as we go.
 
 ## G1 — Package skeleton
 
-- [ ] T1.1 — `packages/result-helpers/package.json` (subpath exports + `@consolidados/results` dep)
-- [ ] T1.2 — `packages/result-helpers/tsconfig.json` (extends base)
-- [ ] T1.3 — `packages/result-helpers/src/index.ts` (`export type` Brand + EnumValues)
-- [ ] T1.4 — `packages/result-helpers/src/globals.ts` (side-effect `import "@consolidados/results"`)
-- [ ] T1.5 — `packages/result-helpers/src/globals-types.d.ts` (`/// <reference />` + ambient Result/Option)
-- [ ] T1.6 — `bun install` registers workspace + installs `@consolidados/results`
-- [ ] T1.7 — `bun run lint` + `bun run typecheck` green
-- [ ] **C1** — Commit: `feat(result-helpers): scaffold package with subpath exports for globals`
+- [x] T1.1 — `packages/result-helpers/package.json` (3 subpath exports + `@consolidados/results@^0.4.0` dep)
+- [x] T1.2 — `packages/result-helpers/tsconfig.json` (extends base, includes `src/**/*`)
+- [x] T1.3 — `packages/result-helpers/src/index.ts` (`export type` Brand + EnumValues with examples in JSDoc)
+- [x] T1.4 — `packages/result-helpers/src/globals.ts` (side-effect `import "@consolidados/results"`)
+- [x] T1.5 — `packages/result-helpers/src/globals-types.d.ts` (`/// <reference />` + ambient Result/Option)
+- [x] T1.6 — `bun install` registered workspace + installed `@consolidados/results@0.4.0`
+- [x] T1.7 — Bumped `biome.json` `$schema` to 2.4.14 (matches installed Biome version); `bun run lint` clean, `bun run typecheck` clean
+- [x] **C1** — Commit: `feat(result-helpers): scaffold package with subpath exports for globals`
 
 ## G2 — Smoke test
 
