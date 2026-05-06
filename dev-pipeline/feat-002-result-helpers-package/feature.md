@@ -1,7 +1,7 @@
 ---
 id: FEAT-002
 slug: result-helpers-package
-status: planned
+status: in-progress
 depends-on: [FEAT-001]
 blocks: [FEAT-003, FEAT-005]
 ---
