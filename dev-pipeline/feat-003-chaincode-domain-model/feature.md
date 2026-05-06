@@ -1,7 +1,7 @@
 ---
 id: FEAT-003
 slug: chaincode-domain-model
-status: planned
+status: in-progress
 depends-on: [FEAT-001, FEAT-002]
 blocks: [FEAT-004]
 ---
