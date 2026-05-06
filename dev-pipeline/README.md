@@ -56,10 +56,8 @@ planned → in-progress → (blocked?) → done → archived
 
 ## Branching
 
-- **Default**: 1 Feature = 1 branch `feat/<feature-slug>`. One commit per Task.
-- **Phase 0** (current bootstrap): direct commits to `dev` allowed.
-- **Phase 1+**: feature branches + PR required.
-- **Epic-as-branch**: when child Features must land atomically and the Epic is < 1 sprint, use `feat/<epic-slug>` as integration branch; child Features merge into it; Epic merges to `dev` when all children are in. Branch prefix stays `feat/` — Git Flow has no `epic/` prefix.
+- **Always**: 1 Feature = 1 branch `feat/<feature-slug>` + PR to `dev`. One commit per Task. PR is reviewed and explicitly approved before merge. **No direct commits to `dev` or `main`** — including bootstrap features.
+- **Epic-as-branch**: when child Features must land atomically and the Epic is < 1 sprint, use `feat/<epic-slug>` as integration branch; child Features merge into it via PR; Epic branch merges to `dev` via PR when all children are in. Branch prefix stays `feat/` — Git Flow has no `epic/` prefix.
 
 ## Frontmatter convention
 

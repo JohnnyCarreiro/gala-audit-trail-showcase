@@ -33,4 +33,11 @@ Do not edit past entries — append only. The journal is an honest record, not a
 **Outcome:** Rejected.
 **Reason:** The author's production convention is const-object-as-enum + `EnumValues<typeof X>` (no `type` field, `match(err, cases)` keys on the variant name directly). Aligned the prompt and ADR-0005 with the production convention.
 
+## 2026-05-05 — Course correction on Git Flow strictness
+
+**Context:** I committed FEAT-001 directly to `dev` per a "Phase 0 direct commits allowed" exception that I myself wrote into the playbook earlier in the same day.
+**Tried:** Followed the documented exception.
+**Outcome:** Course-corrected by the owner.
+**Reason:** Strict Git Flow from day 1, no exceptions for bootstrap. All feature work via `feat/<slug>` branch + PR with explicit owner approval before merge. The exception was removed across `docs/playbook.md`, `AGENTS.md`, `dev-pipeline/README.md`, and the FEAT-001 feature card. The 5 FEAT-001 commits were preserved on a `feat/monorepo-bootstrap` branch and removed from `dev` via force-reset (with explicit owner approval), so FEAT-001 will land via PR as the new convention now requires. Lesson: when a convention is being authored by the same agent that will follow it, the convention's exceptions need owner sign-off before being used. Future hardening to consider: pre-push githook blocking direct commits to `dev`/`main` locally + GitHub branch protection rules as server-side enforcement.
+
 <!-- Add new entries below as the project evolves. -->
