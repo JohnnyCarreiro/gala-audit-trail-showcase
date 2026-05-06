@@ -1,7 +1,7 @@
 ---
 id: FEAT-004
 slug: chaincode-contract-layer
-status: planned
+status: in-progress
 depends-on: [FEAT-003]
 blocks: [FEAT-005]
 ---
