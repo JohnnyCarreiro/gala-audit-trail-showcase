@@ -45,7 +45,7 @@ Bun workspace + Cargo workspace, side by side:
 - **Conventional Commits**. Prefixes: `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `ci`.
 - Scopes: `(monorepo)`, `(docs)`, `(chaincode)`, `(frontend)`, `(verifier)`, `(dto-canon)`, `(signer)`, `(result-helpers)`, `(ci)`, `(meta)`.
 - One commit per logical step.
-- **Git Flow strict**: `main` for production (PR only), `dev` for integration. Feature branches `feat/<feature-slug>`. Phase 0 (initial bootstrap) — direct commits to `dev` allowed.
+- **Git Flow strict from day 1**: `main` for production (PR only), `dev` for integration (PR only — no direct commits, including bootstrap). Feature branches `feat/<feature-slug>` always. Reviewed + explicitly approved before merge.
 
 ### Doc comments
 - Domain layer (aggregates, use cases, events, ports): rich doc-comments as provenance — invariants, emitted events, links to ADRs.

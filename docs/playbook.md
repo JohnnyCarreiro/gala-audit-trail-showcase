@@ -98,8 +98,7 @@ match(err, {
 - **Conventional Commits** (mandatory). Prefixes: `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `ci`.
 - Scopes: `(monorepo)`, `(docs)`, `(chaincode)`, `(frontend)`, `(verifier)`, `(dto-canon)`, `(signer)`, `(result-helpers)`, `(ci)`.
 - One commit per logical step. Tasks within a Feature → one commit per Task (or group of tightly coupled small tasks).
-- **Git Flow strict.** `main` for production (PR only). `dev` for integration. Feature branches `feat/<feature-slug>`.
-- **Phase 0** (initial bootstrap, current): direct commits to `dev` allowed. **Phase 1+**: feature branches + PR required.
+- **Git Flow strict from day 1.** `main` for production (PR only). `dev` for integration (PR only — no direct commits). Every feature lands via `feat/<feature-slug>` branch + PR, reviewed and explicitly approved before merge. **No exceptions for bootstrap or "Phase 0".** GitHub branch protection + local pre-push githooks enforce this server- and client-side.
 
 ## Comments policy
 

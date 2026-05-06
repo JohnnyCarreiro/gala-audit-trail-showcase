@@ -33,4 +33,4 @@ None at this point. Research phase will confirm Bun+Cargo coexistence in CI (lik
 
 ## Branch
 
-`feat/monorepo-bootstrap` — but per playbook, Phase 0 (initial bootstrap) commits direct to `dev`.
+`feat/monorepo-bootstrap`. Merges to `dev` via PR after explicit owner approval — same flow as every other feature.
