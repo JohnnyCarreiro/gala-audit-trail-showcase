@@ -1,0 +1,18 @@
+# Block direct commits to dev/main per docs/playbook.md (Git Flow strict from day 1).
+# This is a local safety net; GitHub branch protection enforces server-side.
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$branch" = "dev" ] || [ "$branch" = "main" ]; then
+  echo ""
+  echo "❌  Direct commits to '$branch' are blocked by policy."
+  echo "    Use a feat/<slug> branch + PR. See docs/playbook.md."
+  echo ""
+  echo "    Override (rare exception, owner-only):"
+  echo "      git commit --no-verify"
+  echo ""
+  echo "    Disable all hooks for this shell session:"
+  echo "      HUSKY=0 git commit ..."
+  echo ""
+  exit 1
+fi
