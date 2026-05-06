@@ -1,0 +1,18 @@
+{
+  "name": "@gala-audit-trail/result-helpers",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Project helpers (Brand, EnumValues) plus globals registration for @consolidados/results — consumed app-wide across the monorepo.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./globals": "./src/globals.ts",
+    "./globals-types": {
+      "types": "./src/globals-types.d.ts"
+    }
+  },
+  "dependencies": {
+    "@consolidados/results": "^0.4.0"
+  }
+}
