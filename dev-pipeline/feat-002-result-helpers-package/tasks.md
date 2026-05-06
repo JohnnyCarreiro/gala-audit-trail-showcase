@@ -15,10 +15,11 @@ Live checklist. Tick as we go.
 
 ## G2 — Smoke test
 
-- [ ] T2.1 — `packages/result-helpers/tests/tsconfig.json` (adds types ref)
-- [ ] T2.2 — `packages/result-helpers/tests/smoke.test.ts` (Ok().isOk(), Err().isErr(), ambient Result/Option types)
-- [ ] T2.3 — `bun test` passes
-- [ ] **C2** — Commit: `test(result-helpers): add smoke test exercising globals end-to-end`
+- [x] T2.1 — Pivot from separate tests/tsconfig.json to a `tests/types.d.ts` with triple-slash reference (Bun isolated install doesn't create a top-level symlink for the package until a consumer app declares the dep, so the `types: ["@gala-audit-trail/result-helpers/globals-types"]` self-reference can't resolve at this stage; the triple-slash works around it cleanly and the consumer apps will use the proper subpath types ref)
+- [x] T2.2 — `packages/result-helpers/tests/smoke.test.ts` — 4 tests covering `Ok().isOk()`, `Err().isErr()`, `Some/None`, `match` exhaustive, all using ambient `Result<T,E>` / `Option<T>` types
+- [x] T2.3 — `bun test` 4 pass / 0 fail; `bun run typecheck` clean (after adding `@types/bun` for `bun:test` types)
+- [x] Updated root `package.json` typecheck script to also run `tsc -p packages/result-helpers/tsconfig.json --noEmit`
+- [x] **C2** — Commit: `test(result-helpers): add smoke test exercising globals end-to-end`
 
 ## G3 — Verification
 
