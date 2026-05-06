@@ -21,6 +21,7 @@ Stand up the dual-workspace skeleton (Bun for TS, Cargo for Rust) at the repo ro
 - [x] `.github/workflows/lint-and-typecheck.yml` (TS) and `.github/workflows/rust-ci.yml` (Rust) skeletons in place
 - [x] `bun install` succeeds; `cargo check --workspace` succeeds (even with empty member crates)
 - [x] `.gitignore` covers `node_modules/`, `target/`, `dist/`, `.env`, `bun.lockb`
+- [x] **Husky** installed with two hooks enforcing the playbook locally: `pre-commit` blocks direct commits on `dev`/`main`; `pre-merge-commit` blocks local merges into `dev`/`main`. Both skippable via `--no-verify` (per-action) or `HUSKY=0` (per-session) — overrides documented in the hook output
 
 ## Scope
 
