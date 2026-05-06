@@ -1,0 +1,17 @@
+{
+  "name": "@gala-audit-trail/chaincode",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "GalaChain chaincode for the audit trail of game sessions. FEAT-003 ships pure domain; FEAT-004 adds the SDK contract layer and repository wrappers.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@gala-audit-trail/result-helpers": "workspace:*",
+    "@consolidados/results": "^0.4.0",
+    "js-sha3": "^0.9.3",
+    "json-stringify-deterministic": "^1.0.12"
+  }
+}

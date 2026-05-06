@@ -17,7 +17,7 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
-    "typecheck": "tsc --noEmit && tsc -p packages/result-helpers/tsconfig.json --noEmit",
+    "typecheck": "tsc --noEmit && tsc -p packages/result-helpers/tsconfig.json --noEmit && tsc -p apps/chaincode/tsconfig.json --noEmit",
     "prepare": "husky"
   },
   "devDependencies": {
