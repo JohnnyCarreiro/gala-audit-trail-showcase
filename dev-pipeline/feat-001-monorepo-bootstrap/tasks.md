@@ -26,9 +26,22 @@ Live checklist. Tick as we go.
 - [x] T3.2 — Write `.github/workflows/rust-ci.yml` (rust stable + components, Swatinem/rust-cache, fmt --check, clippy -D warnings, test --workspace)
 - [x] **C3** — Commit: `ci(monorepo): add TypeScript and Rust pipelines`
 
-## G4 — Verification + close
+## G4 — Verification
 
 - [x] T4.1 — Full local run end-to-end: `bun install --frozen-lockfile` ok, `bun run lint` clean, `bun run typecheck` clean, `cargo fmt --all -- --check` clean, `cargo clippy --workspace --all-targets -- -D warnings` clean, `cargo test --workspace` clean
-- [x] T4.2 — Update `feature.md` status `in-progress → done` and tick all acceptance boxes
-- [x] **C4** — Commit: `chore(meta): mark FEAT-001 done`
-- [x] Push `dev` to `origin`
+
+## G5 — Husky (added mid-flight per owner; FEAT-001 scope)
+
+- [x] T5.1 — `bun add -d husky` + `bunx husky init` (installs husky 9.1.7, adds `prepare` script to `package.json`, creates `.husky/_/` runtime)
+- [x] T5.2 — Write `.husky/pre-commit` blocking direct commits on `dev`/`main` with override docs in failure output
+- [x] T5.3 — Write `.husky/pre-merge-commit` blocking local merges into `dev`/`main` (same override docs)
+- [x] T5.4 — `chmod +x` both hooks
+- [x] T5.5 — Sanity test: simulated repo on `dev` blocks (exit 1); on `feat/*` allows (exit 0)
+- [x] **C5** — Commit: `feat(monorepo): add husky pre-commit and pre-merge-commit hooks`
+
+## G6 — Close + push
+
+- [x] Course-corrected from direct-to-dev merge to feat-branch + PR flow (see `docs/ai-workflow/notes.md`)
+- [x] Update `feature.md` status `in-progress → done` and tick all acceptance boxes (incl. husky)
+- [ ] Push `feat/monorepo-bootstrap` to `origin`
+- [ ] Wait for owner validation → owner gives explicit OK → open PR via `gh`
