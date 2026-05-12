@@ -219,6 +219,14 @@ dependencies = [
 [[package]]
 name = "dto-signer"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "dto-canon",
+ "hex",
+ "k256",
+ "serde",
+ "serde_json",
+]
 
 [[package]]
 name = "ecdsa"
