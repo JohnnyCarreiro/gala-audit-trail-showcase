@@ -8,5 +8,13 @@ authors.workspace = true
 repository.workspace = true
 description = "Canonical DTO serialization and secp256k1/keccak256 sign/verify primitives for GalaChain audit trails."
 
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+hex = { workspace = true }
+k256 = { workspace = true }
+sha3 = { workspace = true }
+
 [lints]
 workspace = true
