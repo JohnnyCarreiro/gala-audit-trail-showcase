@@ -56,4 +56,19 @@ Things uncertain from the GalaChain SDK or other library docs. Each item gets re
 **Working assumption:** `r || s || v` (matches Ethereum convention which MetaMask uses). Confirm by inspecting a real signed DTO from the frontend during integration testing.
 **Resolved by:** TBD — `feat-005-frontend-bootstrap` integration phase.
 
+## OQ-07 — Per-event signature: chaincode persists DTO sig, off-chain verifier expects event sig
+
+**Context:** FEAT-007 (`apps/audit-verifier`) cryptographically verifies each `SessionEvent`'s `signature` over `canonicalize_for_signing(event)` (canonical event minus `signature` + `trace`). Surfaced during FEAT-007 implementation.
+
+**Question:** The current chaincode (FEAT-004) inherits `event.signature` from the original `AppendCheckpointDto.signature` — which is a sig over the *DTO* canonical (`{sessionId, eventId, payload, uniqueKey, signature}`), not over the persisted *event* canonical (`{sequence, prevHash, signedBy, timestamp, ...}`). Consequence: a real on-chain event won't pass the verifier's cryptographic check. The hash chain (`prevHash`) stays internally consistent — only the per-event signature is misaligned with the verifier's expectation.
+
+**Three paths considered:**
+1. **(a) Chaincode re-signs at write time** with a chaincode-owned key. Simplest fix in code; changes trust model — events are now vouched-for by the chaincode, not the original user. Loses the "trustless off-chain verification" property.
+2. **(b) Persist enough DTO context to reconstruct.** Add the original DTO fields (`uniqueKey`, etc.) into the persisted event so the off-chain verifier can rebuild the DTO canonical input and verify the sig against it. More storage, preserves trust model.
+3. **(c) Accept the gap.** Verifier validates chain integrity + signer authorization but not per-event crypto. Document honestly — the off-chain proof's "trustless" claim weakens to "trusts the chaincode for signature attestations but independently verifies chain + auth".
+
+**Working assumption:** For the showcase, **path (c)** — keep the verifier as-is for the demo, document the gap. The cleanest production path is **(b)**: 1-line change in `AppendCheckpoint` to persist the `uniqueKey`, then the verifier reconstructs and validates the real DTO sig. **(a)** is rejected — the trust-model regression isn't worth the simplicity.
+
+**Resolved by:** TBD — decision point flagged for the user.
+
 <!-- Append new questions below. Resolved questions can be deleted after promotion to ADR / SDD. -->

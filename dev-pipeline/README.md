@@ -83,7 +83,7 @@ Status changes are visible in `git diff`. No external tracker needed for this sc
 | [`feat-002-result-helpers-package`](./feat-002-result-helpers-package/) | Feature | done |
 | [`feat-003-chaincode-domain-model`](./feat-003-chaincode-domain-model/) | Feature | done |
 | [`feat-004-chaincode-contract-layer`](./feat-004-chaincode-contract-layer/) | Feature | done |
-| [`feat-005-frontend-bootstrap`](./feat-005-frontend-bootstrap/) | Feature | planned |
+| [`feat-005-frontend-bootstrap`](./feat-005-frontend-bootstrap/) | Feature | done |
 | [`epic-rust-off-chain-verifier`](./epic-rust-off-chain-verifier/) | Epic | done |
 | ↳ [`feat-006-dto-canon-lib`](./epic-rust-off-chain-verifier/feat-006-dto-canon-lib/) | Feature (child) | done |
 | ↳ [`feat-007-audit-verifier-cli`](./epic-rust-off-chain-verifier/feat-007-audit-verifier-cli/) | Feature (child) | done |
