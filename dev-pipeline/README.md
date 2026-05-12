@@ -84,10 +84,10 @@ Status changes are visible in `git diff`. No external tracker needed for this sc
 | [`feat-003-chaincode-domain-model`](./feat-003-chaincode-domain-model/) | Feature | done |
 | [`feat-004-chaincode-contract-layer`](./feat-004-chaincode-contract-layer/) | Feature | done |
 | [`feat-005-frontend-bootstrap`](./feat-005-frontend-bootstrap/) | Feature | planned |
-| [`epic-rust-off-chain-verifier`](./epic-rust-off-chain-verifier/) | Epic | in-progress |
+| [`epic-rust-off-chain-verifier`](./epic-rust-off-chain-verifier/) | Epic | done |
 | ↳ [`feat-006-dto-canon-lib`](./epic-rust-off-chain-verifier/feat-006-dto-canon-lib/) | Feature (child) | done |
 | ↳ [`feat-007-audit-verifier-cli`](./epic-rust-off-chain-verifier/feat-007-audit-verifier-cli/) | Feature (child) | done |
-| ↳ [`feat-008-dto-signer-bonus`](./epic-rust-off-chain-verifier/feat-008-dto-signer-bonus/) | Feature (child, **bonus**) | planned |
+| ↳ [`feat-008-dto-signer-bonus`](./epic-rust-off-chain-verifier/feat-008-dto-signer-bonus/) | Feature (child, **bonus**) | done |
 
 > **Obsidian users:** the table below auto-renders via Dataview from feature frontmatter. GitHub readers see the static table above as the source of truth.
 

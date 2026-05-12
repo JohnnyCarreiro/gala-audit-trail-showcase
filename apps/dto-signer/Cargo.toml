@@ -8,6 +8,14 @@ authors.workspace = true
 repository.workspace = true
 description = "Thin CLI on top of dto-canon — reads a DTO + private key from stdin, emits canonical bytes + signature."
 
+[dependencies]
+dto-canon = { path = "../../crates/dto-canon" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+hex = { workspace = true }
+k256 = { workspace = true }
+anyhow = "1"
+
 [lints]
 workspace = true
 

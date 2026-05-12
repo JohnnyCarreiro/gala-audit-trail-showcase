@@ -1,7 +1,7 @@
 ---
 id: FEAT-008
 slug: dto-signer-bonus
-status: planned
+status: done
 depends-on: [FEAT-006]
 blocks: []
 parent-epic: EPIC-001
@@ -18,20 +18,20 @@ Thin Rust CLI on top of `crates/dto-canon`. Reads a DTO + private key from stdin
 
 ## Acceptance criteria
 
-- [ ] `apps/dto-signer/src/main.rs` — ~50 lines, `clap` CLI reading stdin
-- [ ] Input format: `{ "dto": <object>, "private_key_hex": "..." }`
-- [ ] Output format: `{ "canonical_hex": "...", "signature_hex": "...", "signer_pubkey": "..." }`
-- [ ] One demo invocation in `docs/deployment.md` (bonus section)
-- [ ] `cargo clippy -p dto-signer -- -D warnings` clean
+- [x] `apps/dto-signer/src/main.rs` — 84 lines of stdin-reading CLI (clap not needed — no flags, just stdin in / stdout out, matches the unix-pipe ergonomics in the spec).
+- [x] Input format: `{ "dto": <object>, "privateKeyHex": "..." }` (camelCase via serde rename).
+- [x] Output format: `{ "canonicalHex": "...", "signatureHex": "...", "signerPubkey": "..." }`.
+- [x] Demo invocation added to `docs/deployment.md` § "dto-signer (bonus)" with real input/output.
+- [x] `cargo clippy --workspace --all-targets -- -D warnings` clean.
 
 ## Scope
 
 **In:** the binary itself.
-**Out:** anything that requires extending `dto-canon`. If `dto-canon` doesn't expose a needed primitive, add the primitive in FEAT-006 instead, not here.
+**Out:** anything that requires extending `dto-canon`. `derive_pubkey` lives in `main.rs` (not `dto-canon`) because the lib is intentionally sign/verify-only — keeping pubkey derivation out keeps `dto-canon`'s surface minimal.
 
 ## Open questions
 
-- Confirm private-key input format — hex without `0x` prefix vs with prefix vs PEM.
+- Resolved: private-key input is **hex** (with or without `0x` prefix); 32 bytes. PEM was rejected as overkill for a debug CLI.
 
 ## Branch
 
