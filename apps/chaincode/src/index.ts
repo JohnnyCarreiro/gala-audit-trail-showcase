@@ -14,7 +14,9 @@
  * Single-line side-effect below registers `Ok` / `Err` / `Some` / `None` /
  * `match` on `globalThis` for every file in this workspace.
  */
+import "reflect-metadata";
 import "@gala-audit-trail/result-helpers/globals";
 
+export * from "./contracts/audit-trail-contract";
 export * from "./domain/index";
-// `./contracts` re-exports land in FEAT-004.
+export * from "./dto/index";

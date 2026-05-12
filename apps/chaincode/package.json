@@ -9,9 +9,17 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@gala-audit-trail/result-helpers": "workspace:*",
     "@consolidados/results": "^0.4.0",
+    "@gala-audit-trail/result-helpers": "workspace:*",
+    "@gala-chain/api": "^3.1.1",
+    "@gala-chain/chaincode": "^3.1.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "js-sha3": "^0.9.3",
-    "json-stringify-deterministic": "^1.0.12"
+    "json-stringify-deterministic": "^1.0.12",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@gala-chain/test": "^3.1.1"
   }
 }
