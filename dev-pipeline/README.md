@@ -79,13 +79,13 @@ Status changes are visible in `git diff`. No external tracker needed for this sc
 
 | Item | Type | Status |
 |------|------|--------|
-| [`feat-001-monorepo-bootstrap`](./feat-001-monorepo-bootstrap/) | Feature | planned |
-| [`feat-002-result-helpers-package`](./feat-002-result-helpers-package/) | Feature | planned |
-| [`feat-003-chaincode-domain-model`](./feat-003-chaincode-domain-model/) | Feature | planned |
-| [`feat-004-chaincode-contract-layer`](./feat-004-chaincode-contract-layer/) | Feature | planned |
+| [`feat-001-monorepo-bootstrap`](./feat-001-monorepo-bootstrap/) | Feature | done |
+| [`feat-002-result-helpers-package`](./feat-002-result-helpers-package/) | Feature | done |
+| [`feat-003-chaincode-domain-model`](./feat-003-chaincode-domain-model/) | Feature | done |
+| [`feat-004-chaincode-contract-layer`](./feat-004-chaincode-contract-layer/) | Feature | done |
 | [`feat-005-frontend-bootstrap`](./feat-005-frontend-bootstrap/) | Feature | planned |
-| [`epic-rust-off-chain-verifier`](./epic-rust-off-chain-verifier/) | Epic | planned |
-| ↳ [`feat-006-dto-canon-lib`](./epic-rust-off-chain-verifier/feat-006-dto-canon-lib/) | Feature (child) | planned |
+| [`epic-rust-off-chain-verifier`](./epic-rust-off-chain-verifier/) | Epic | in-progress |
+| ↳ [`feat-006-dto-canon-lib`](./epic-rust-off-chain-verifier/feat-006-dto-canon-lib/) | Feature (child) | done |
 | ↳ [`feat-007-audit-verifier-cli`](./epic-rust-off-chain-verifier/feat-007-audit-verifier-cli/) | Feature (child) | planned |
 | ↳ [`feat-008-dto-signer-bonus`](./epic-rust-off-chain-verifier/feat-008-dto-signer-bonus/) | Feature (child, **bonus**) | planned |
 
