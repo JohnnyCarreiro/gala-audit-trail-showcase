@@ -8,8 +8,25 @@ authors.workspace = true
 repository.workspace = true
 description = "Off-chain verifier CLI for the Gala audit trail. Polls the TNT gateway, recomputes the hash chain, emits tampering proofs."
 
+[dependencies]
+dto-canon = { path = "../../crates/dto-canon" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+hex = { workspace = true }
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"
+
+[dev-dependencies]
+# Integration tests synthesize signed fixtures — they need k256 directly
+# to derive the test public keys that go into the SignerRegistry.
+k256 = { workspace = true }
+
 [lints]
 workspace = true
+
+[lib]
+path = "src/lib.rs"
 
 [[bin]]
 name = "audit-verifier"
