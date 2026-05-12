@@ -1,7 +1,7 @@
 ---
 id: FEAT-005
 slug: frontend-bootstrap
-status: planned
+status: done
 depends-on: [FEAT-002, FEAT-004]
 blocks: []
 ---
