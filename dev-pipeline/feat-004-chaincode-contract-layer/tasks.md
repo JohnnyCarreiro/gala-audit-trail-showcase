@@ -1,6 +1,6 @@
 # FEAT-004 — Tasks
 
-Live checklist. Pause point at end of G6 — see bottom for resume notes.
+Live checklist. **DONE** — G1 through G8 complete; PR pending owner approval.
 
 ## G1 — SDK deps
 
@@ -68,19 +68,23 @@ Pick up at T7.1 (smoke-test `TestChaincode` import in bun:test). The Q-E decisio
 
 ---
 
-## G7 — Integration tests (PENDING)
+## G7 — Integration tests
 
-- [ ] T7.1 — Smoke-test `TestChaincode` import + minimal invoke in bun:test
-- [ ] T7.2 — Happy path: initiate → 2× checkpoint → finalize → verify
-- [ ] T7.3 — Edge: appending to completed
-- [ ] T7.4 — Edge: unauthorized signer
-- [ ] T7.5 — Edge: double-finalize
-- [ ] T7.6 — Edge: verify on tampered chain
-- [ ] **C7** — Commit (or document fallback in OQ-08 if blocked)
+- [x] T7.1 — Smoke-test `fixture()` import + AuditTrailContract registration in bun:test. Root-cause discovered: `import { type GalaChainContext, ... }` was type-only, so bun erased it at runtime and `Reflect.getMetadata("design:paramtypes")` fell back to `Object`, which fabric-contract-api rejects. Fix: value-import + `biome-ignore lint/style/useImportType` with documented reason on `audit-trail-contract.ts:1`.
+- [x] T7.2 — Happy path: initiate → 2× checkpoint → finalize → VerifyIntegrity returns `Valid(3)`.
+- [x] T7.3 — Edge: appending to completed → `CONFLICT` (SessionAlreadyCompleted via ADR-0005 mapping).
+- [x] T7.4 — Edge: unauthorized signer (registered but not in `players`) → `FORBIDDEN` (UnauthorizedSigner).
+- [x] T7.5 — Edge: double-finalize → `CONFLICT` (SessionAlreadyCompleted). Note: `enforceUniqueKey` would also block a literal replay, so the test builds a *fresh* DTO with a new uniqueKey to isolate the domain-level rejection.
+- [x] T7.6 — Edge: pre-corrupted prevHash chain via `fixture.savedState(...)`. Bypasses the write-then-mutate path (which is masked by the stub's read cache) and exercises VerifyIntegrity cleanly. Reports `Tampered(eventsVerified: 1, tamperedAt: 2, PrevHashMismatch)`.
+- [x] **C7** — `test(chaincode): add FEAT-004 G7 integration tests via @gala-chain/test fixture`
 
-## G8 — Close + push + PR (PENDING)
+> Two non-obvious bits worth flagging for next time:
+> 1. `@gala-chain/test`'s package barrel re-exports `./e2e` which pulls `@gala-chain/client` → `fabric-ca-client`. Bun fails to resolve that dep in our minimal setup; **import from the `unit/` subpath** to dodge it.
+> 2. Don't call `fixture.callingUser(...)` when DTOs are signed — `@Submit`/`@Evaluate` decorators run `authenticate()` which sets `ctx.callingUserData` from the DTO signature, and the SDK guards against double-set.
 
-- [ ] T8.1 — Full local run (bun + cargo regression)
-- [ ] T8.2 — Update `feature.md` status, tick acceptance
+## G8 — Close + push + PR
+
+- [x] T8.1 — Full local run: `bun run lint` clean (44 files), `bun run typecheck` clean (root + 2 packages + chaincode), `bun test` 35/35 green, `cargo test --workspace` 0/0 (no regressions; Rust crates still scaffold-only).
+- [x] T8.2 — Update `feature.md` status `in-progress → done`, all 6 acceptance criteria ticked.
 - [ ] **C8** — `chore(meta): mark FEAT-004 done`
 - [ ] Owner approval → open PR via `gh pr create`

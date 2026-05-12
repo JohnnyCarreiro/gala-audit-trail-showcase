@@ -1,7 +1,7 @@
 ---
 id: FEAT-004
 slug: chaincode-contract-layer
-status: in-progress
+status: done
 depends-on: [FEAT-003]
 blocks: [FEAT-005]
 ---
@@ -14,12 +14,12 @@ Implement the SDK boundary: `AuditTrailContract` (exposes domain via `GalaContra
 
 ## Acceptance criteria
 
-- [ ] `apps/chaincode/src/dto/` — DTOs (`InitiateSessionDto`, `AppendCheckpointDto`, `FinalizeSessionDto`) with class-validator decorators, matching SDK conventions
-- [ ] `apps/chaincode/src/infra/session-repository.ts` — wraps `getObjectByKey`, `putChainObject`, etc. Each method returns `Result<Option<T>, InfraError>` or `Result<T, InfraError>`. **`try/catch` lives here only.**
-- [ ] `apps/chaincode/src/contracts/error-adapter.ts` — `domainErrorToChainError` and `infraErrorToChainError`, exhaustive `match` per playbook
-- [ ] `apps/chaincode/src/contracts/AuditTrailContract.ts` — extends `GalaContract`, composes domain + repository via `Result`, throws `ChainError` only via the adapter
-- [ ] `apps/chaincode/tests/integration/audit-trail-contract.spec.ts` — covers happy path + edge cases (sequence violation, unauthorized signer, double-completion)
-- [ ] Local `chaincode-test` (or equivalent SDK test harness) runs green
+- [x] `apps/chaincode/src/dto/` — DTOs (`InitiateSessionDto`, `AppendCheckpointDto`, `FinalizeSessionDto`) with class-validator decorators, matching SDK conventions
+- [x] `apps/chaincode/src/infra/session-repository.ts` — wraps `getObjectByKey`, `putChainObject`, etc. Each method returns `Result<Option<T>, InfraError>` or `Result<T, InfraError>`. **`try/catch` lives here only.**
+- [x] `apps/chaincode/src/contracts/error-adapter.ts` — `domainErrorToChainError` and `infraErrorToChainError`, exhaustive `match` per playbook
+- [x] `apps/chaincode/src/contracts/AuditTrailContract.ts` — extends `GalaContract`, composes domain + repository via `Result`, throws `ChainError` only via the adapter
+- [x] `apps/chaincode/tests/integration/audit-trail-contract.spec.ts` — covers happy path + edge cases (append-after-complete, double-finalize, unauthorized signer, tampered hash chain)
+- [x] Local `chaincode-test` (`@gala-chain/test` `fixture()` harness) runs green under `bun:test` — 5 integration tests pass; 35/35 total chaincode tests green
 
 ## Scope
 
