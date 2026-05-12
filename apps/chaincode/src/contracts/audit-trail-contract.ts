@@ -1,4 +1,5 @@
-import { Evaluate, type GalaChainContext, GalaContract, Submit } from "@gala-chain/chaincode";
+// biome-ignore lint/style/useImportType: GalaChainContext must be a *value* import — fabric-contract-api reads `design:paramtypes` via `Reflect.getMetadata` to bind methods to the SDK dispatch layer; a `type`-only import is erased at runtime and the lookup falls back to `Object`, which fabric rejects with "Type not properly specified for parameter ctx". Verified empirically by FEAT-004 G7.1.
+import { Evaluate, GalaChainContext, GalaContract, Submit } from "@gala-chain/chaincode";
 import { appendCheckpoint } from "../domain/append-checkpoint";
 import { finalizeSession } from "../domain/finalize-session";
 import { initiateSession } from "../domain/initiate-session";
