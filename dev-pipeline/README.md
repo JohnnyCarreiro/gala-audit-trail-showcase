@@ -86,7 +86,7 @@ Status changes are visible in `git diff`. No external tracker needed for this sc
 | [`feat-005-frontend-bootstrap`](./feat-005-frontend-bootstrap/) | Feature | planned |
 | [`epic-rust-off-chain-verifier`](./epic-rust-off-chain-verifier/) | Epic | in-progress |
 | ↳ [`feat-006-dto-canon-lib`](./epic-rust-off-chain-verifier/feat-006-dto-canon-lib/) | Feature (child) | done |
-| ↳ [`feat-007-audit-verifier-cli`](./epic-rust-off-chain-verifier/feat-007-audit-verifier-cli/) | Feature (child) | planned |
+| ↳ [`feat-007-audit-verifier-cli`](./epic-rust-off-chain-verifier/feat-007-audit-verifier-cli/) | Feature (child) | done |
 | ↳ [`feat-008-dto-signer-bonus`](./epic-rust-off-chain-verifier/feat-008-dto-signer-bonus/) | Feature (child, **bonus**) | planned |
 
 > **Obsidian users:** the table below auto-renders via Dataview from feature frontmatter. GitHub readers see the static table above as the source of truth.
