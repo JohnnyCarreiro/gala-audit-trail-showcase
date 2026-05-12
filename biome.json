@@ -17,7 +17,8 @@
       "!**/*.tsbuildinfo",
       "!**/bun.lock",
       "!**/Cargo.lock",
-      "!docs/.obsidian"
+      "!docs/.obsidian",
+      "!apps/frontend/app/globals.css"
     ]
   },
   "formatter": {
